@@ -15,7 +15,10 @@ import BuildIcon from '@mui/icons-material/Build';
 import PlumbingIcon from '@mui/icons-material/Plumbing';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import HandymanIcon from '@mui/icons-material/Handyman';
+import PhoneIcon from '@mui/icons-material/Phone';
 import ImageSlider from '../components/ImageSlider';
+import StyledButton from '../components/StyledButton';
+import WorksSection from '../components/WorksSection';
 import { useNavigate } from 'react-router-dom';
 import { colors } from '../App';
 
@@ -24,122 +27,26 @@ const HomePage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
 
-  const services = [
-    {
-      id: 1,
-      title: 'שירותי אינסטלציה',
-      description: 'התקנה ותיקון של מערכות מים וביוב',
-      icon: PlumbingIcon,
-    },
-    {
-      id: 2,
-      title: 'תיקור וחשמל',
-      description: 'עבודות חשמל ותיקור דירתי',
-      icon: ElectricBoltIcon,
-    },
-    {
-      id: 3,
-      title: 'תיקון כללי',
-      description: 'תיקון מכשירים חשמליים ועוד',
-      icon: BuildIcon,
-    },
-    {
-      id: 4,
-      title: 'עבודות יד',
-      description: 'ריהוט, דלתות וחלונות',
-      icon: HandymanIcon,
-    },
-  ];
-
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* Hero Section with Slider */}
       <Container maxWidth="lg" sx={{ py: { xs: 2, md: 4 } }}>
         <ImageSlider />
       </Container>
 
-      {/* Welcome Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, direction: 'rtl' }}>
-        <Box
-          sx={{
-            textAlign: 'center',
-            mb: { xs: 4, md: 6 },
-          }}
-        >
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: { xs: '2rem', md: '3rem' },
-              mb: 3,
-              color: colors.navy,
-              fontFamily: '"Rubik", sans-serif',
-              fontWeight: 700,
-            }}
-          >
-            ברוכים הבאים!
-          </Typography>
-          {/* Copper underline bar */}
-          <Box
-            sx={{
-              width: '50px',
-              height: '3px',
-              backgroundColor: colors.copper,
-              margin: '0 auto 1.5rem auto',
-            }}
-          />
-          <Typography
-            variant="h5"
-            sx={{
-              color: colors.pipeGray,
-              maxWidth: '600px',
-              mx: 'auto',
-              fontFamily: '"Heebo", sans-serif',
-            }}
-          >
-            אנחנו מתמחים בשירותי אינסטלציה ותיקון כללי עם ניסיון של שנים רבות.
-            סיוע מהיר, עבודה איכותית, וירוד הוגן.
-          </Typography>
-        </Box>
-
-        {/* Call to Action */}
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
-          <Button
-            variant="contained"
-            size="large"
-            sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 700,
-              textTransform: 'none',
-              backgroundColor: colors.copper,
-              color: 'white',
-              fontFamily: '"Rubik", sans-serif',
-              '&:hover': {
-                backgroundColor: colors.copperLight,
-                transform: 'translateY(-2px)',
-                boxShadow: `0 8px 16px rgba(${196}, ${122}, ${58}, 0.35)`,
-              },
-            }}
-            onClick={() => navigate('/works')}
-          >
-            ראה את כל העבודות שלנו
-          </Button>
-        </Box>
-      </Container>
-
-      {/* Services Overview */}
-      <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 }, direction: 'rtl' }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
+      {/* Services Section Title */}
+      <Box sx={{ backgroundColor: colors.cream, py: { xs: 6, md: 10 }, direction: 'rtl' }}>
+        <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
+          <Box sx={{ textAlign: 'center', mb: 6 }}>
             <Typography
               variant="h2"
               sx={{
-                mb: 3,
-                fontSize: { xs: '1.8rem', md: '2.5rem' },
+                mb: 2,
+                fontSize: { xs: '2rem', md: '2.8rem' },
                 color: colors.navy,
                 fontFamily: '"Rubik", sans-serif',
                 fontWeight: 700,
+                lineHeight: 1.2,
               }}
             >
               השירותים שלנו
@@ -147,86 +54,78 @@ const HomePage = () => {
             {/* Copper underline bar */}
             <Box
               sx={{
-                width: '50px',
-                height: '3px',
+                width: '60px',
+                height: '4px',
                 backgroundColor: colors.copper,
                 margin: '0 auto',
+                borderRadius: '2px',
               }}
             />
           </Box>
 
-          <Grid container spacing={3}>
-            {services.map((service) => {
-              const IconComponent = service.icon;
-              return (
-                <Grid item xs={12} sm={6} md={3} key={service.id}>
-                  <Card
-                    sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      textAlign: 'center',
-                      transition: 'all 0.3s ease',
-                      backgroundColor: colors.slate,
-                      boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: `0 8px 24px rgba(${196}, ${122}, ${58}, 0.25)`,
-                      },
-                      borderRadius: '8px',
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        p: 2,
-                        backgroundColor: colors.copper,
-                        color: 'white',
-                      }}
-                    >
-                      <IconComponent sx={{ fontSize: '3rem' }} />
-                    </Box>
-                    <CardContent sx={{ flexGrow: 1 }}>
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          mb: 1,
-                          fontWeight: 700,
-                          color: colors.copper,
-                          fontFamily: '"Rubik", sans-serif',
-                        }}
-                      >
-                        {service.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          lineHeight: 1.6,
-                          color: colors.pipeGray,
-                          fontFamily: '"Heebo", sans-serif',
-                        }}
-                      >
-                        {service.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              );
-            })}
-          </Grid>
+          {/* Call to Action */}
+          <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <StyledButton
+              variant="primary"
+              size="large"
+              onClick={() => navigate('/works')}
+            >
+              עבודות נוספות
+            </StyledButton>
+          </Box>
+
+          <Box
+            sx={{
+              textAlign: 'center',
+              mb: 4,
+            }}
+          >
+            <Typography
+              variant="h5"
+              sx={{
+                color: colors.pipeGray,
+                maxWidth: '700px',
+                mx: 'auto',
+                fontFamily: '"Heebo", sans-serif',
+                fontSize: { xs: '0.95rem', md: '1.1rem' },
+                lineHeight: 1.7,
+                fontWeight: 400,
+              }}
+            >
+              אנחנו מתמחים בשירותי אינסטלציה ותיקון כללי עם ניסיון של שנים רבות.
+              סיוע מהיר, עבודה איכותית, ומחיר הוגן.
+            </Typography>
+          </Box>
+
+          {/* Separator */}
+          <Box
+            sx={{
+              width: '60px',
+              height: '4px',
+              backgroundColor: colors.copper,
+              margin: '0 auto',
+              mb: 4,
+              borderRadius: '2px',
+            }}
+          />
+
+          {/* Works Section */}
+          <WorksSection />
         </Container>
       </Box>
 
       {/* Why Choose Us */}
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, direction: 'rtl' }}>
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, direction: 'rtl' }}>
+        <Box sx={{ textAlign: 'center', mb: 5 }}>
           <Typography
             variant="h2"
             sx={{
-              mb: 3,
+              mb: 2,
               fontSize: { xs: '1.8rem', md: '2.5rem' },
               color: colors.navy,
               fontFamily: '"Rubik", sans-serif',
               fontWeight: 700,
+              lineHeight: 1.3,
             }}
           >
             למה לבחור בנו?
@@ -234,31 +133,38 @@ const HomePage = () => {
           {/* Copper underline bar */}
           <Box
             sx={{
-              width: '50px',
-              height: '3px',
+              width: '60px',
+              height: '4px',
               backgroundColor: colors.copper,
               margin: '0 auto',
+              borderRadius: '2px',
             }}
           />
         </Box>
 
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Grid container spacing={{ xs: 3, md: 4 }} sx={{ mt: 1 }}>
           <Grid item xs={12} md={6}>
             <Card
               sx={{
                 backgroundColor: colors.slate,
-                boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
-                borderRadius: '8px',
+                boxShadow: `0 4px 12px rgba(${10}, ${22}, ${40}, 0.15)`,
+                borderRadius: '12px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: `0 8px 20px rgba(${196}, ${122}, ${58}, 0.2)`,
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ py: 2.5, px: 2.5 }}>
                 <Typography
                   variant="h6"
                   sx={{
-                    mb: 1,
+                    mb: 1.5,
                     fontWeight: 700,
                     color: colors.copper,
                     fontFamily: '"Rubik", sans-serif',
+                    fontSize: '1.05rem',
                   }}
                 >
                   ✓ ניסיון רב שנים
@@ -267,6 +173,8 @@ const HomePage = () => {
                   sx={{
                     color: colors.pipeGray,
                     fontFamily: '"Heebo", sans-serif',
+                    lineHeight: 1.6,
+                    fontSize: '0.95rem',
                   }}
                 >
                   עבודנו עם אלפי לקוחות מרוצים על פני שנים רבות.
@@ -279,18 +187,24 @@ const HomePage = () => {
             <Card
               sx={{
                 backgroundColor: colors.slate,
-                boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
-                borderRadius: '8px',
+                boxShadow: `0 4px 12px rgba(${10}, ${22}, ${40}, 0.15)`,
+                borderRadius: '12px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: `0 8px 20px rgba(${196}, ${122}, ${58}, 0.2)`,
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ py: 2.5, px: 2.5 }}>
                 <Typography
                   variant="h6"
                   sx={{
-                    mb: 1,
+                    mb: 1.5,
                     fontWeight: 700,
                     color: colors.copper,
                     fontFamily: '"Rubik", sans-serif',
+                    fontSize: '1.05rem',
                   }}
                 >
                   ✓ מענה מהיר
@@ -299,6 +213,8 @@ const HomePage = () => {
                   sx={{
                     color: colors.pipeGray,
                     fontFamily: '"Heebo", sans-serif',
+                    lineHeight: 1.6,
+                    fontSize: '0.95rem',
                   }}
                 >
                   אנחנו מגיעים בתוך 24 שעות למרבית הקריאות.
@@ -311,18 +227,24 @@ const HomePage = () => {
             <Card
               sx={{
                 backgroundColor: colors.slate,
-                boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
-                borderRadius: '8px',
+                boxShadow: `0 4px 12px rgba(${10}, ${22}, ${40}, 0.15)`,
+                borderRadius: '12px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: `0 8px 20px rgba(${196}, ${122}, ${58}, 0.2)`,
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ py: 2.5, px: 2.5 }}>
                 <Typography
                   variant="h6"
                   sx={{
-                    mb: 1,
+                    mb: 1.5,
                     fontWeight: 700,
                     color: colors.copper,
                     fontFamily: '"Rubik", sans-serif',
+                    fontSize: '1.05rem',
                   }}
                 >
                   ✓ עבודה איכותית
@@ -331,6 +253,8 @@ const HomePage = () => {
                   sx={{
                     color: colors.pipeGray,
                     fontFamily: '"Heebo", sans-serif',
+                    lineHeight: 1.6,
+                    fontSize: '0.95rem',
                   }}
                 >
                   כל עבודה מבוצעת בדייקנות עם שימוש בחומרים איכותיים.
@@ -343,29 +267,37 @@ const HomePage = () => {
             <Card
               sx={{
                 backgroundColor: colors.slate,
-                boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
-                borderRadius: '8px',
+                boxShadow: `0 4px 12px rgba(${10}, ${22}, ${40}, 0.15)`,
+                borderRadius: '12px',
+                transition: 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: `0 8px 20px rgba(${196}, ${122}, ${58}, 0.2)`,
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ py: 2.5, px: 2.5 }}>
                 <Typography
                   variant="h6"
                   sx={{
-                    mb: 1,
+                    mb: 1.5,
                     fontWeight: 700,
                     color: colors.copper,
                     fontFamily: '"Rubik", sans-serif',
+                    fontSize: '1.05rem',
                   }}
                 >
-                  ✓ ירוד הוגן
+                  ✓ מחיר הוגן
                 </Typography>
                 <Typography
                   sx={{
                     color: colors.pipeGray,
                     fontFamily: '"Heebo", sans-serif',
+                    lineHeight: 1.6,
+                    fontSize: '0.95rem',
                   }}
                 >
-                  בדיקה חינם והצעה ברורה לפני תחילת כל עבודה.
+                  בדיקת העבודה והצעה ברורה לפני תחילת כל עבודה.
                 </Typography>
               </CardContent>
             </Card>
@@ -407,29 +339,22 @@ const HomePage = () => {
           >
             052-641-0042
           </Typography>
-          <Button
-            variant="contained"
+          <StyledButton
+            component="a"
+            href="tel:0526410042"
+            variant="primary"
             size="large"
+            startIcon={<PhoneIcon />}
             sx={{
-              backgroundColor: colors.copper,
-              color: 'white',
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 700,
-              textTransform: 'none',
-              fontFamily: '"Rubik", sans-serif',
-              '&:hover': {
-                backgroundColor: colors.copperLight,
-                transform: 'translateY(-2px)',
-                boxShadow: `0 8px 16px rgba(${196}, ${122}, ${58}, 0.35)`,
+              flexDirection: 'row',
+              '& .MuiButton-startIcon': {
+                marginLeft: 0,
+                marginRight: '0.75rem',
               },
             }}
-            component="a"
-            href="tel:+972526410042"
           >
-            קרא עכשיו
-          </Button>
+            חייג עכשיו
+          </StyledButton>
         </Container>
       </Box>
     </Box>

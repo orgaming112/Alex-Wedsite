@@ -5,100 +5,42 @@ import {
   Grid,
   Card,
   CardContent,
-  CardHeader,
   Typography,
-  Button,
-  Collapse,
   IconButton,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  useTheme,
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import PlumbingIcon from '@mui/icons-material/Plumbing';
-import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
-import BuildIcon from '@mui/icons-material/Build';
-import WindowIcon from '@mui/icons-material/Window';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PhoneIcon from '@mui/icons-material/Phone';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { colors } from '../App';
+import StyledButton from '../components/StyledButton';
 
 const WorksPage = () => {
-  const theme = useTheme();
-  const [expandedService, setExpandedService] = useState(null);
+  const [currentImages, setCurrentImages] = useState([0, 0, 0, 0, 0, 0]);
 
-  const handleExpand = (serviceId) => {
-    setExpandedService(expandedService === serviceId ? null : serviceId);
+  const handleNext = (index) => {
+    setCurrentImages(prev => {
+      const newImages = [...prev];
+      newImages[index] = (newImages[index] + 1) % 3;
+      return newImages;
+    });
   };
 
-  const works = [
-    {
-      id: 1,
-      title: 'שירותי אינסטלציה',
-      icon: PlumbingIcon,
-      description: 'שירותים מלאים של אינסטלציה',
-      image: '/works/plumbing.jpg',
-      details: [
-        'התקנת ברזים ומקלחות',
-        'תיקור קו הביוב',
-        'התקנת מערכות מים חדשות',
-        'תיקון זליגות וקשיות במים',
-        'התקנת מכשירים סניטריים',
-      ],
-    },
-    {
-      id: 2,
-      title: 'עבודות חשמל ותיקור',
-      icon: ElectricBoltIcon,
-      description: 'שירותי חשמל דירתי ותיקור',
-      image: '/works/electrical.jpg',
-      details: [
-        'התקנת שקעים וחיבורים',
-        'תיקור לוחות חשמל',
-        'בדיקת בטיחות חשמלית',
-        'התקנת משאבות ודוודים',
-        'בדיקות שנתיות',
-      ],
-    },
-    {
-      id: 3,
-      title: 'תיקון כללי ותיקור',
-      icon: BuildIcon,
-      description: 'שירותים כלליים לדירה',
-      image: '/works/general.jpg',
-      details: [
-        'תיקור דלתות וחלונות',
-        'היצקים והסתמות דליפות',
-        'תיקור טיח וצבע',
-        'תיקור מכשירים חשמליים',
-        'עבודות אחרות בהגדרה',
-      ],
-    },
-    {
-      id: 4,
-      title: 'עבודות יד וריהוט',
-      icon: WindowIcon,
-      description: 'עבודות יד וריהוט מותאם',
-      image: '/works/furniture.jpg',
-      details: [
-        'סידור וספרים מעצבות',
-        'קביעת מידוגים',
-        'תיקור וציפוי ריהוט',
-        'התקנת מראות וצילומים',
-        'עבודות קרנישים',
-      ],
-    },
-  ];
+  const handlePrev = (index) => {
+    setCurrentImages(prev => {
+      const newImages = [...prev];
+      newImages[index] = (newImages[index] - 1 + 3) % 3;
+      return newImages;
+    });
+  };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* Header */}
       <Box
         sx={{
           backgroundColor: colors.navy,
           color: 'white',
-          py: { xs: 4, md: 6 },
+          py: { xs: 5, md: 8 },
           textAlign: 'center',
           borderBottom: `3px solid ${colors.copper}`,
           direction: 'rtl',
@@ -109,21 +51,23 @@ const WorksPage = () => {
             variant="h1"
             sx={{
               fontSize: { xs: '2rem', md: '3rem' },
-              mb: 3,
+              mb: 2,
               fontWeight: 700,
               fontFamily: '"Rubik", sans-serif',
+              lineHeight: 1.2,
             }}
           >
-            העבודות שלנו
+            מבחר העבודות שלנו
           </Typography>
           {/* Copper underline bar below title */}
           <Box
             sx={{
-              width: '50px',
-              height: '3px',
+              width: '60px',
+              height: '4px',
               backgroundColor: colors.copper,
               margin: '0 auto',
-              mb: 3,
+              mb: 2.5,
+              borderRadius: '2px',
             }}
           />
           <Typography
@@ -134,149 +78,98 @@ const WorksPage = () => {
               fontFamily: '"Heebo", sans-serif',
             }}
           >
-            שירותים מקצועיים ומהימנים לכל צרכי הדירה
+            מוזמנים להתרשם ממבחר עבודות שביצענו - איכות, דיוק ושירות ללא פשרות.
           </Typography>
         </Container>
       </Box>
 
-      {/* Works List */}
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, direction: 'rtl' }}>
-        <Grid container spacing={3}>
-          {works.map((work) => {
-            const IconComponent = work.icon;
-            const isExpanded = expandedService === work.id;
+      {/* Image Collage Placeholder */}
+      <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 }, direction: 'rtl' }}>
+        <Container maxWidth="lg">
+          <Box sx={{ textAlign: 'center', mb: 4 }}>
+            <Typography
+              variant="h2"
+              sx={{
+                mb: 3,
+                fontSize: { xs: '1.8rem', md: '2.5rem' },
+                color: colors.navy,
+                fontFamily: '"Rubik", sans-serif',
+                fontWeight: 700,
+              }}
+            >
+              עבודות שלנו 
+            </Typography>
+            {/* Copper underline bar */}
+            <Box
+              sx={{
+                width: '60px',
+                height: '4px',
+                backgroundColor: colors.copper,
+                margin: '0 auto',
+                borderRadius: '2px',
+              }}
+            />
+          </Box>
 
-            return (
-              <Grid item xs={12} md={6} key={work.id}>
-                <Card
+          {/* Placeholder Grid for Images */}
+          <Grid container spacing={2} sx={{ mt: 2 }}>
+            {[1, 2, 3, 4, 5, 6].map((item, index) => (
+              <Grid item xs={12} sm={6} md={4} key={item}>
+                <Box
                   sx={{
-                    height: '100%',
+                    height: { xs: 200, md: 250 },
+                    backgroundColor: colors.slate,
+                    borderRadius: '8px',
                     display: 'flex',
                     flexDirection: 'column',
-                    backgroundColor: colors.slate,
-                    boxShadow: isExpanded
-                      ? `0 8px 24px rgba(${196}, ${122}, ${58}, 0.25)`
-                      : `0 2px 8px rgba(${10}, ${22}, ${40}, 0.15)`,
-                    transition: 'all 0.3s ease',
-                    borderRadius: '8px',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: `2px dashed ${colors.copper}`,
+                    position: 'relative',
                   }}
                 >
-                  <CardHeader
-                    avatar={
-                      <Box
-                        sx={{
-                          p: 1.5,
-                          backgroundColor: colors.copper,
-                          borderRadius: '8px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <IconComponent
-                          sx={{ color: 'white', fontSize: '2rem' }}
-                        />
-                      </Box>
-                    }
-                    title={
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontWeight: 700,
-                          color: colors.copper,
-                          textAlign: 'right',
-                          fontFamily: '"Rubik", sans-serif',
-                        }}
-                      >
-                        {work.title}
-                      </Typography>
-                    }
-                    subheader={
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          textAlign: 'right',
-                          color: colors.pipeGray,
-                          fontFamily: '"Heebo", sans-serif',
-                        }}
-                      >
-                        {work.description}
-                      </Typography>
-                    }
-                    action={
-                      <IconButton
-                        onClick={() => handleExpand(work.id)}
-                        sx={{
-                          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 0.3s ease',
-                          color: colors.copper,
-                        }}
-                      >
-                        <ExpandMoreIcon />
-                      </IconButton>
-                    }
-                  />
-                  <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-                    <CardContent sx={{ pt: 0 }}>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{
-                          mb: 2,
-                          fontWeight: 600,
-                          color: colors.pipeGray,
-                          fontFamily: '"Rubik", sans-serif',
-                        }}
-                      >
-                        מה כלול בשירות זה:
-                      </Typography>
-                      <List sx={{ p: 0 }}>
-                        {work.details.map((detail, index) => (
-                          <ListItem
-                            key={index}
-                            sx={{
-                              py: 1,
-                              px: 0,
-                              '&:not(:last-child)': {
-                                borderBottom: `1px solid rgba(${196}, ${122}, ${58}, 0.2)`,
-                              },
-                            }}
-                          >
-                            <ListItemIcon
-                              sx={{
-                                minWidth: 36,
-                                display: 'flex',
-                                justifyContent: 'flex-end',
-                                ml: 1,
-                              }}
-                            >
-                              <CheckCircleIcon
-                                sx={{
-                                  color: colors.copper,
-                                  fontSize: '1.3rem',
-                                }}
-                              />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={detail}
-                              sx={{
-                                textAlign: 'right',
-                                color: colors.pipeGray,
-                                '& .MuiTypography-root': {
-                                  fontFamily: '"Heebo", sans-serif',
-                                },
-                              }}
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </CardContent>
-                  </Collapse>
-                </Card>
+                  <Typography
+                    sx={{
+                      color: colors.pipeGray,
+                      fontFamily: '"Heebo", sans-serif',
+                      textAlign: 'center',
+                      mb: 1,
+                    }}
+                  >
+                    תמונה {currentImages[index] + 1} מתוך 3
+                  </Typography>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <IconButton
+                      onClick={() => handlePrev(index)}
+                      sx={{ color: colors.copper }}
+                      size="small"
+                    >
+                      <ArrowForwardIcon />
+                    </IconButton>
+                    <Typography
+                      sx={{
+                        color: colors.pipeGray,
+                        fontFamily: '"Heebo", sans-serif',
+                        textAlign: 'center',
+                        mx: 1,
+                      }}
+                    >
+                      עבודה {item}
+                    </Typography>
+                    <IconButton
+                      onClick={() => handleNext(index)}
+                      sx={{ color: colors.copper }}
+                      size="small"
+                    >
+                      <ArrowBackIcon />
+                    </IconButton>
+                  </Box>
+                </Box>
               </Grid>
-            );
-          })}
-        </Grid>
-      </Container>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
 
       {/* Pricing Section */}
       <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 }, direction: 'rtl' }}>
@@ -292,7 +185,7 @@ const WorksPage = () => {
                 fontWeight: 700,
               }}
             >
-              תשלום וביקור חינם
+              תשלום וביקור 
             </Typography>
             {/* Copper underline bar */}
             <Box
@@ -324,7 +217,7 @@ const WorksPage = () => {
                       fontFamily: '"Rubik", sans-serif',
                     }}
                   >
-                    📞 בדיקה חינם
+                    📞 בדיקה
                   </Typography>
                   <Typography
                     color="textSecondary"
@@ -334,7 +227,7 @@ const WorksPage = () => {
                       fontFamily: '"Heebo", sans-serif',
                     }}
                   >
-                    נבקר באתרך, נבדוק את הבעיה, ונתן הערכה חינמית למחיר העבודה.
+                   שלחו לנו הודעה, ואנחנו כבר נדאג לכל השאר, נבין יחד את הצורך, נתאם זמן הגעה שנוח לכם, ונציג הצעת מחיר הוגנת וברורה עוד לפני תחילת העבודה.
                   </Typography>
                 </CardContent>
               </Card>
@@ -368,7 +261,7 @@ const WorksPage = () => {
                       fontFamily: '"Heebo", sans-serif',
                     }}
                   >
-                    יעבודה יתואם עם ך לפני תחילתה - לא תהיה הפתעה בסוף!
+                    מחיר הוגן, שקוף וברור – כבר מהשלב הראשון.
                   </Typography>
                 </CardContent>
               </Card>
@@ -399,29 +292,22 @@ const WorksPage = () => {
           >
             רוצה לתאם ביקור?
           </Typography>
-          <Button
-            variant="contained"
+          <StyledButton
+            component="a"
+            href="tel:0526410042"
+            variant="primary"
             size="large"
+            startIcon={<PhoneIcon />}
             sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              textTransform: 'none',
-              fontWeight: 700,
-              backgroundColor: colors.copper,
-              color: 'white',
-              fontFamily: '"Rubik", sans-serif',
-              '&:hover': {
-                backgroundColor: colors.copperLight,
-                transform: 'translateY(-2px)',
-                boxShadow: `0 8px 16px rgba(${196}, ${122}, ${58}, 0.35)`,
+              flexDirection: 'row',
+              '& .MuiButton-startIcon': {
+                marginLeft: 0,
+                marginRight: '0.75rem',
               },
             }}
-            component="a"
-            href="tel:+972526410042"
           >
             קרא עכשיו: 052-641-0042
-          </Button>
+          </StyledButton>
         </Box>
       </Container>
     </Box>

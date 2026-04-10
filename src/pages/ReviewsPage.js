@@ -75,13 +75,13 @@ const ReviewsPage = () => {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* Header */}
       <Box
         sx={{
           backgroundColor: colors.navy,
           color: 'white',
-          py: { xs: 4, md: 6 },
+          py: { xs: 5, md: 8 },
           textAlign: 'center',
           borderBottom: `3px solid ${colors.copper}`,
           direction: 'rtl',
@@ -92,9 +92,10 @@ const ReviewsPage = () => {
             variant="h1"
             sx={{
               fontSize: { xs: '2rem', md: '3rem' },
-              mb: 3,
+              mb: 2,
               fontWeight: 700,
               fontFamily: '"Rubik", sans-serif',
+              lineHeight: 1.2,
             }}
           >
             ביקורות לקוחות
@@ -102,10 +103,11 @@ const ReviewsPage = () => {
           {/* Copper underline bar */}
           <Box
             sx={{
-              width: '50px',
-              height: '3px',
+              width: '60px',
+              height: '4px',
               backgroundColor: colors.copper,
-              margin: '0 auto 1.5rem auto',
+              margin: '0 auto 2rem auto',
+              borderRadius: '2px',
             }}
           />
           <Typography
@@ -114,6 +116,7 @@ const ReviewsPage = () => {
               fontSize: { xs: '1rem', md: '1.2rem' },
               opacity: 0.9,
               fontFamily: '"Heebo", sans-serif',
+              lineHeight: 1.6,
             }}
           >
             אלפי לקוחות מרוצים שהאמינו בנו
@@ -170,12 +173,13 @@ const ReviewsPage = () => {
         </Box>
 
         {/* Reviews Cards */}
-        <Grid container spacing={3}>
+        <Grid container spacing={3} alignItems="stretch" justifyContent="center">
           {reviews.map((review) => (
-            <Grid item xs={12} md={6} key={review.id}>
+            <Grid item xs={12} md={6} key={review.id} sx={{ display: 'flex', maxWidth: '500px' }}>
               <Card
                 sx={{
                   height: '100%',
+                  width: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   backgroundColor: colors.slate,

@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
 import Navbar from './components/Navbar';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -83,28 +83,96 @@ const theme = createTheme({
         html: {
           direction: 'rtl',
           scrollBehavior: 'smooth',
+          overflow: 'auto',
+          overflowX: 'hidden',
+          width: '100%',
+          maxWidth: '100%',
         },
-        '@import': [
-          'url("https://fonts.googleapis.com/css2?family=Rubik:wght@700;800;900&family=Heebo:wght@400;500;700&display=swap")',
-        ],
         body: {
           backgroundColor: colors.navy,
           color: colors.white,
           backgroundImage: 'repeating-linear-gradient(0deg, rgba(196, 122, 58, 0.03) 0px, rgba(196, 122, 58, 0.03) 1px, transparent 1px, transparent 50px)',
+          overflow: 'auto',
+          overflowX: 'hidden',
+          width: '100%',
+          maxWidth: '100%',
+          margin: 0,
+          padding: 0,
         },
+        '@import': [
+          'url("https://fonts.googleapis.com/css2?family=Rubik:wght@700;800;900&family=Heebo:wght@400;500;700&display=swap")',
+        ],
       },
     },
     MuiButton: {
       styleOverrides: {
+        root: {
+          textTransform: 'none',
+          fontFamily: '"Rubik", sans-serif',
+          fontWeight: 700,
+          transition: 'all 0.25s cubic-bezier(0.4, 0.0, 0.2, 1)',
+          borderRadius: '6px',
+          minHeight: '44px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          '&:active': {
+            transform: 'translateY(0)',
+          },
+        },
         contained: {
           backgroundColor: colors.copper,
           color: colors.white,
+          boxShadow: `0 6px 16px rgba(196, 122, 58, 0.35)`,
           '&:hover': {
             backgroundColor: colors.copperLight,
-            boxShadow: `0 8px 16px ${colors.copper}66`,
+            boxShadow: `0 12px 24px rgba(196, 122, 58, 0.4)`,
             transform: 'translateY(-2px)',
           },
-          borderRadius: '4px',
+          '&:active': {
+            transform: 'translateY(0)',
+            boxShadow: `0 4px 12px rgba(196, 122, 58, 0.3)`,
+          },
+          '&:disabled': {
+            backgroundColor: colors.pipeGray,
+            color: 'rgba(255, 255, 255, 0.5)',
+            boxShadow: 'none',
+          },
+        },
+        outlined: {
+          borderColor: colors.copper,
+          color: colors.copper,
+          border: '2px solid',
+          backgroundColor: 'transparent',
+          '&:hover': {
+            backgroundColor: `rgba(196, 122, 58, 0.08)`,
+            borderColor: colors.copperLight,
+            color: colors.copperLight,
+            transform: 'translateY(-2px)',
+            boxShadow: `0 6px 16px rgba(196, 122, 58, 0.15)`,
+          },
+          '&:active': {
+            transform: 'translateY(0)',
+          },
+          '&:disabled': {
+            borderColor: colors.pipeGray,
+            color: colors.pipeGray,
+          },
+        },
+        text: {
+          color: colors.copper,
+          backgroundColor: 'transparent',
+          '&:hover': {
+            backgroundColor: `rgba(196, 122, 58, 0.1)`,
+            color: colors.copperLight,
+            transform: 'translateY(-2px)',
+          },
+          '&:active': {
+            transform: 'translateY(0)',
+          },
+          '&:disabled': {
+            color: colors.pipeGray,
+          },
         },
       },
     },
@@ -121,28 +189,54 @@ const theme = createTheme({
   },
 });
 
+function AppContent() {
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundColor: colors.navy,
+        width: '100%',
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        direction: 'rtl',
+      }}
+    >
+      <Navbar />
+      <Box
+        component="main"
+        sx={{
+          flex: 1,
+          pt: 10,
+          width: '100%',
+          maxWidth: '100%',
+          overflowX: 'hidden',
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/works" element={<WorksPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
+        </Routes>
+      </Box>
+    </Box>
+  );
+}
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100vh',
-            backgroundColor: colors.navy,
-          }}
-        >
-          <Navbar />
-          <Box component="main" sx={{ flex: 1, pt: 10 }}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/works" element={<WorksPage />} />
-              <Route path="/reviews" element={<ReviewsPage />} />
-            </Routes>
-          </Box>
-        </Box>
+        <AppContent />
         <WhatsAppButton />
       </Router>
     </ThemeProvider>

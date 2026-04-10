@@ -22,6 +22,8 @@ import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import BuildIcon from '@mui/icons-material/Build';
 import WindowIcon from '@mui/icons-material/Window';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import PhoneIcon from '@mui/icons-material/Phone';
+import StyledButton from '../components/StyledButton';
 
 const ServicesPage = () => {
   const theme = useTheme();
@@ -87,7 +89,7 @@ const ServicesPage = () => {
   ];
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
       {/* Header */}
       <Box
         sx={{
@@ -115,7 +117,7 @@ const ServicesPage = () => {
               opacity: 0.9,
             }}
           >
-            שירותים מקצועיים ומהימנים לכל צרכי הדירה
+            מוזמנים להתרשם ממבחר עבודות שביצענו - איכות, דיוק ושירות ללא פשרות.
           </Typography>
         </Container>
       </Box>
@@ -253,7 +255,7 @@ const ServicesPage = () => {
               color: theme.palette.primary.main,
             }}
           >
-            תשלום וביקור חינם
+            תשלום וביקור 
           </Typography>
 
           <Grid container spacing={3} sx={{ mt: 1 }}>
@@ -268,10 +270,10 @@ const ServicesPage = () => {
                       color: theme.palette.primary.main,
                     }}
                   >
-                    📞 בדיקה חינם
+                    📞 בדיקה
                   </Typography>
                   <Typography color="textSecondary" sx={{ mb: 2 }}>
-                    נבקר באתרך, נבדוק את הבעיה, ונתן הערכה חינמית למחיר העבודה.
+                    שלחו לנו הודעה, ואנחנו כבר נדאג לכל השאר, נבין יחד את הצורך, נתאם זמן הגעה שנוח לכם, ונציג הצ עת מחיר הוגנת וברורה עוד לפני תחילת העבודה.
                   </Typography>
                 </CardContent>
               </Card>
@@ -291,7 +293,7 @@ const ServicesPage = () => {
                     💰 תיאום מחיר
                   </Typography>
                   <Typography color="textSecondary" sx={{ mb: 2 }}>
-                    יעבודה יתואם עם ך לפני תחילתה - לא תהיה הפתעה בסוף!
+                    מחיר הוגן, שקוף וברור – כבר מהשלב הראשון.
                   </Typography>
                 </CardContent>
               </Card>
@@ -320,22 +322,15 @@ const ServicesPage = () => {
           >
             רוצה לתאם ביקור?
           </Typography>
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              textTransform: 'none',
-              fontWeight: 700,
-            }}
+          <StyledButton
             component="a"
-            href="tel:+972526410042"
+            href="tel:0526410042"
+            variant="primary"
+            size="large"
+            startIcon={<PhoneIcon />}
           >
             קרא עכשיו: 052-641-0042
-          </Button>
+          </StyledButton>
         </Box>
       </Container>
     </Box>

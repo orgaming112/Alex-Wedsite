@@ -15,22 +15,22 @@ const sliderImages = [
   {
     id: 1,
     title: 'שירותי אינסטלציה',
-    src: '/photos/home/image1.jpg',
+    src: '/photos/home/image1.jpeg',
   },
   {
     id: 2,
     title: 'תיקון ברזים',
-    src: '/photos/home/image2.jpg',
+    src: '/photos/home/image2.jpeg',
   },
   {
     id: 3,
     title: 'שירותי תיקון כללי',
-    src: '/photos/home/image3.jpg',
+    src: '/photos/home/image3.jpeg',
   },
   {
     id: 4,
     title: 'התקנת מערכות מים',
-    src: '/photos/home/image4.jpg',
+    src: '/photos/home/image4.jpeg',
   },
 ];
 
@@ -62,8 +62,10 @@ const ImageSlider = () => {
       sx={{
         position: 'relative',
         width: '100%',
+        maxWidth: '100%',
         height: { xs: '300px', sm: '400px', md: '500px' },
         overflow: 'hidden',
+        overflowX: 'hidden',
         borderRadius: '10px',
         boxShadow: `0 8px 24px ${colors.navy}40`,
         border: `3px solid ${colors.copper}`,
@@ -74,7 +76,9 @@ const ImageSlider = () => {
         sx={{
           position: 'relative',
           width: '100%',
+          maxWidth: '100%',
           height: '100%',
+          overflow: 'hidden',
         }}
       >
         {/* Images */}
@@ -128,30 +132,9 @@ const ImageSlider = () => {
         </Box>
 
         {/* Navigation Arrows */}
+        {/* Left Button - Previous Slide (for RTL) */}
         <IconButton
           onClick={handleBack}
-          sx={{
-            position: 'absolute',
-            top: '50%',
-            right: 16,
-            transform: 'translateY(-50%)',
-            zIndex: 3,
-            backgroundColor: `${colors.copper}CC`,
-            color: colors.white,
-            width: 48,
-            height: 48,
-            '&:hover': {
-              backgroundColor: colors.copper,
-              transform: 'translateY(-50%) scale(1.1)',
-            },
-            transition: 'all 0.3s ease',
-          }}
-        >
-          <KeyboardArrowLeft sx={{ fontSize: '2rem' }} />
-        </IconButton>
-
-        <IconButton
-          onClick={handleNext}
           sx={{
             position: 'absolute',
             top: '50%',
@@ -165,6 +148,31 @@ const ImageSlider = () => {
             '&:hover': {
               backgroundColor: colors.copper,
               transform: 'translateY(-50%) scale(1.1)',
+              opacity: 0.9,
+            },
+            transition: 'all 0.3s ease',
+          }}
+        >
+          <KeyboardArrowLeft sx={{ fontSize: '2rem' }} />
+        </IconButton>
+
+        {/* Right Button - Next Slide (for RTL) */}
+        <IconButton
+          onClick={handleNext}
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            right: 16,
+            transform: 'translateY(-50%)',
+            zIndex: 3,
+            backgroundColor: `${colors.copper}CC`,
+            color: colors.white,
+            width: 48,
+            height: 48,
+            '&:hover': {
+              backgroundColor: colors.copper,
+              transform: 'translateY(-50%) scale(1.1)',
+              opacity: 0.9,
             },
             transition: 'all 0.3s ease',
           }}
