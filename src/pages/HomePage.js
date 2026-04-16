@@ -5,27 +5,47 @@ import {
   Grid,
   Card,
   CardContent,
-  CardMedia,
+  Stack,
+  Divider,
   Typography,
-  Button,
-  useTheme,
-  useMediaQuery,
 } from '@mui/material';
-import BuildIcon from '@mui/icons-material/Build';
 import PlumbingIcon from '@mui/icons-material/Plumbing';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
+import BuildIcon from '@mui/icons-material/Build';
 import HandymanIcon from '@mui/icons-material/Handyman';
 import PhoneIcon from '@mui/icons-material/Phone';
 import ImageSlider from '../components/ImageSlider';
 import StyledButton from '../components/StyledButton';
-import WorksSection from '../components/WorksSection';
+import Accordion from '../components/Accordion';
 import { useNavigate } from 'react-router-dom';
 import { colors } from '../App';
 
 const HomePage = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
+
+  // Services data for accordion
+  const servicesData = [
+    {
+      icon: PlumbingIcon,
+      title: 'שירותי אינסטלציה',
+      content: ['התקנת ברזים', 'מקלחות', 'תיקור דליפות', 'ומערכות מים'],
+    },
+    {
+      icon: ElectricBoltIcon,
+      title: 'עבודות חשמל ותיקור',
+      content: ['התקנת שקעים', 'תיקור לוחות חשמל', 'בדיקות בטיחות'],
+    },
+    {
+      icon: BuildIcon,
+      title: 'תיקון כללי',
+      content: ['תיקור דלתות', 'חלונות', 'טיח', 'צבע ותיקורים שונים'],
+    },
+    {
+      icon: HandymanIcon,
+      title: 'עבודות יד וריהוט',
+      content: ['התקנה', 'תיקור ריהוט', 'קביעת מידוגים', 'וקרנישים'],
+    },
+  ];
 
   return (
     <Box sx={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
@@ -34,37 +54,37 @@ const HomePage = () => {
         <ImageSlider />
       </Container>
 
-      {/* Services Section Title */}
-      <Box sx={{ backgroundColor: colors.cream, py: { xs: 6, md: 10 }, direction: 'rtl' }}>
+      {/* Services Section */}
+      <Box sx={{ backgroundColor: colors.cream, py: { xs: 6, md: 10 } }}>
         <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Typography
-              variant="h2"
-              sx={{
-                mb: 2,
-                fontSize: { xs: '2rem', md: '2.8rem' },
-                color: colors.navy,
-                fontFamily: '"Rubik", sans-serif',
-                fontWeight: 700,
-                lineHeight: 1.2,
-              }}
-            >
-              השירותים שלנו
-            </Typography>
-            {/* Copper underline bar */}
-            <Box
-              sx={{
-                width: '60px',
-                height: '4px',
-                backgroundColor: colors.copper,
-                margin: '0 auto',
-                borderRadius: '2px',
-              }}
-            />
-          </Box>
+          <Stack spacing={3.5} alignItems="center">
+            {/* Title */}
+            <Box sx={{ textAlign: 'center' }}>
+              <Typography
+                variant="h2"
+                sx={{
+                  mb: 2,
+                  fontSize: { xs: '2rem', md: '2.8rem' },
+                  color: colors.navy,
+                  fontFamily: '"Rubik", sans-serif',
+                  fontWeight: 700,
+                  lineHeight: 1.2,
+                }}
+              >
+                השירותים שלנו
+              </Typography>
+              <Box
+                sx={{
+                  width: '60px',
+                  height: '4px',
+                  backgroundColor: colors.copper,
+                  margin: '0 auto',
+                  borderRadius: '2px',
+                }}
+              />
+            </Box>
 
-          {/* Call to Action */}
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
+            {/* CTA Button */}
             <StyledButton
               variant="primary"
               size="large"
@@ -72,20 +92,17 @@ const HomePage = () => {
             >
               עבודות נוספות
             </StyledButton>
-          </Box>
 
-          <Box
-            sx={{
-              textAlign: 'center',
-              mb: 4,
-            }}
-          >
+            {/* Divider */}
+            <Divider sx={{ width: '80%', borderColor: colors.copper, opacity: 0.5 }} />
+
+            {/* Description */}
             <Typography
               variant="h5"
               sx={{
                 color: colors.pipeGray,
                 maxWidth: '700px',
-                mx: 'auto',
+                textAlign: 'center',
                 fontFamily: '"Heebo", sans-serif',
                 fontSize: { xs: '0.95rem', md: '1.1rem' },
                 lineHeight: 1.7,
@@ -95,27 +112,20 @@ const HomePage = () => {
               אנחנו מתמחים בשירותי אינסטלציה ותיקון כללי עם ניסיון של שנים רבות.
               סיוע מהיר, עבודה איכותית, ומחיר הוגן.
             </Typography>
-          </Box>
 
-          {/* Separator */}
-          <Box
-            sx={{
-              width: '60px',
-              height: '4px',
-              backgroundColor: colors.copper,
-              margin: '0 auto',
-              mb: 4,
-              borderRadius: '2px',
-            }}
-          />
+            {/* Divider */}
+            <Divider sx={{ width: '80%', borderColor: colors.copper, opacity: 0.5 }} />
 
-          {/* Works Section */}
-          <WorksSection />
+            {/* Services Accordion */}
+            <Box sx={{ width: '100%', maxWidth: '800px' }}>
+              <Accordion items={servicesData} />
+            </Box>
+          </Stack>
         </Container>
       </Box>
 
       {/* Why Choose Us */}
-      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 }, direction: 'rtl' }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 5, md: 8 } }}>
         <Box sx={{ textAlign: 'center', mb: 5 }}>
           <Typography
             variant="h2"
@@ -177,7 +187,9 @@ const HomePage = () => {
                     fontSize: '0.95rem',
                   }}
                 >
-                  עבודנו עם אלפי לקוחות מרוצים על פני שנים רבות.
+                 הצטרפו גם אתם למאות לקוחות מרוצים שכבר בחרו בנו.
+                 <br />
+                 אנחנו כאן כדי לספק לכם שירות מקצועי, אמין ובמחיר הוגן, בדיוק כמו שמגיע לכם.
                 </Typography>
               </CardContent>
             </Card>
@@ -312,7 +324,6 @@ const HomePage = () => {
           color: 'white',
           py: { xs: 4, md: 6 },
           textAlign: 'center',
-          direction: 'rtl',
           borderTop: `3px solid ${colors.copper}`,
         }}
       >
@@ -326,7 +337,7 @@ const HomePage = () => {
               fontFamily: '"Rubik", sans-serif',
             }}
           >
-            צריך עזרה? יצור קשר עכשיו!
+            צריך עזרה? תצור קשר עכשיו!
           </Typography>
           <Typography
             variant="h5"
@@ -353,7 +364,7 @@ const HomePage = () => {
               },
             }}
           >
-            חייג עכשיו
+            לחץ כאן
           </StyledButton>
         </Container>
       </Box>

@@ -1,37 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Container,
   Box,
   Grid,
   Card,
   CardContent,
+  Stack,
   Typography,
-  IconButton,
 } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { colors } from '../App';
 import StyledButton from '../components/StyledButton';
+import Collage from '../components/Collage';
 
 const WorksPage = () => {
-  const [currentImages, setCurrentImages] = useState([0, 0, 0, 0, 0, 0]);
-
-  const handleNext = (index) => {
-    setCurrentImages(prev => {
-      const newImages = [...prev];
-      newImages[index] = (newImages[index] + 1) % 3;
-      return newImages;
-    });
-  };
-
-  const handlePrev = (index) => {
-    setCurrentImages(prev => {
-      const newImages = [...prev];
-      newImages[index] = (newImages[index] - 1 + 3) % 3;
-      return newImages;
-    });
-  };
+  // Sample image data for collages
+  // In real implementation, replace with actual image paths
+  const workCollages = [
+    {
+      id: 1,
+      items: [
+        { id: '1-1' },
+        { id: '1-2' },
+        { id: '1-3' },
+        { id: '1-4' },
+        { id: '1-5' },
+        { id: '1-6' },
+      ],
+    },
+  ];
 
   return (
     <Box sx={{ width: '100%', maxWidth: '100%', overflowX: 'hidden' }}>
@@ -43,7 +40,6 @@ const WorksPage = () => {
           py: { xs: 5, md: 8 },
           textAlign: 'center',
           borderBottom: `3px solid ${colors.copper}`,
-          direction: 'rtl',
         }}
       >
         <Container maxWidth="md">
@@ -83,96 +79,15 @@ const WorksPage = () => {
         </Container>
       </Box>
 
-      {/* Image Collage Placeholder */}
-      <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 }, direction: 'rtl' }}>
+      {/* Image Collage Section */}
+      <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
-            <Typography
-              variant="h2"
-              sx={{
-                mb: 3,
-                fontSize: { xs: '1.8rem', md: '2.5rem' },
-                color: colors.navy,
-                fontFamily: '"Rubik", sans-serif',
-                fontWeight: 700,
-              }}
-            >
-              עבודות שלנו 
-            </Typography>
-            {/* Copper underline bar */}
-            <Box
-              sx={{
-                width: '60px',
-                height: '4px',
-                backgroundColor: colors.copper,
-                margin: '0 auto',
-                borderRadius: '2px',
-              }}
-            />
-          </Box>
-
-          {/* Placeholder Grid for Images */}
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            {[1, 2, 3, 4, 5, 6].map((item, index) => (
-              <Grid item xs={12} sm={6} md={4} key={item}>
-                <Box
-                  sx={{
-                    height: { xs: 200, md: 250 },
-                    backgroundColor: colors.slate,
-                    borderRadius: '8px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    border: `2px dashed ${colors.copper}`,
-                    position: 'relative',
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      color: colors.pipeGray,
-                      fontFamily: '"Heebo", sans-serif',
-                      textAlign: 'center',
-                      mb: 1,
-                    }}
-                  >
-                    תמונה {currentImages[index] + 1} מתוך 3
-                  </Typography>
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <IconButton
-                      onClick={() => handlePrev(index)}
-                      sx={{ color: colors.copper }}
-                      size="small"
-                    >
-                      <ArrowForwardIcon />
-                    </IconButton>
-                    <Typography
-                      sx={{
-                        color: colors.pipeGray,
-                        fontFamily: '"Heebo", sans-serif',
-                        textAlign: 'center',
-                        mx: 1,
-                      }}
-                    >
-                      עבודה {item}
-                    </Typography>
-                    <IconButton
-                      onClick={() => handleNext(index)}
-                      sx={{ color: colors.copper }}
-                      size="small"
-                    >
-                      <ArrowBackIcon />
-                    </IconButton>
-                  </Box>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
+          <Collage images={workCollages[0].items} spacing={2} />
         </Container>
       </Box>
 
       {/* Pricing Section */}
-      <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 }, direction: 'rtl' }}>
+      <Box sx={{ backgroundColor: colors.cream, py: { xs: 4, md: 6 } }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: 'center', mb: 4 }}>
             <Typography
@@ -271,7 +186,7 @@ const WorksPage = () => {
       </Box>
 
       {/* Schedule Section */}
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, direction: 'rtl' }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
             backgroundColor: colors.slate,
@@ -306,7 +221,7 @@ const WorksPage = () => {
               },
             }}
           >
-            קרא עכשיו: 052-641-0042
+            התקשרו עכשיו : 052-641-0042
           </StyledButton>
         </Box>
       </Container>

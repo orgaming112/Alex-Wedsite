@@ -329,7 +329,7 @@ const ServicesPage = () => {
             size="large"
             startIcon={<PhoneIcon />}
           >
-            קרא עכשיו: 052-641-0042
+            התקשרו : 052-641-0042
           </StyledButton>
         </Box>
       </Container>

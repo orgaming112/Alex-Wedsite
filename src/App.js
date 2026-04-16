@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
 import Navbar from './components/Navbar';
 import WhatsAppButton from './components/WhatsAppButton';
+import AccessibilityButton, { AccessibilityProvider } from './components/AccessibilityButton';
 import HomePage from './pages/HomePage';
 import WorksPage from './pages/WorksPage';
 import ReviewsPage from './pages/ReviewsPage';
@@ -207,7 +208,6 @@ function AppContent() {
         width: '100%',
         maxWidth: '100%',
         overflowX: 'hidden',
-        direction: 'rtl',
       }}
     >
       <Navbar />
@@ -233,13 +233,16 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <AppContent />
-        <WhatsAppButton />
-      </Router>
-    </ThemeProvider>
+    <AccessibilityProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <AppContent />
+          <WhatsAppButton />
+          <AccessibilityButton />
+        </Router>
+      </ThemeProvider>
+    </AccessibilityProvider>
   );
 }
 

@@ -84,7 +84,6 @@ const ReviewsPage = () => {
           py: { xs: 5, md: 8 },
           textAlign: 'center',
           borderBottom: `3px solid ${colors.copper}`,
-          direction: 'rtl',
         }}
       >
         <Container maxWidth="md">
@@ -119,13 +118,15 @@ const ReviewsPage = () => {
               lineHeight: 1.6,
             }}
           >
-            אלפי לקוחות מרוצים שהאמינו בנו
+            הצטרפו גם אתם למאות לקוחות מרוצים שכבר בחרו בנו.
+            <br />
+            אנחנו כאן כדי לספק לכם שירות מקצועי, אמין ובמחיר הוגן, בדיוק כמו שמגיע לכם.
           </Typography>
         </Container>
       </Box>
 
       {/* Reviews Grid */}
-      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 }, direction: 'rtl' }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 4, md: 6 } }}>
         {/* Overall Rating Summary */}
         <Box
           sx={{
@@ -279,94 +280,8 @@ const ReviewsPage = () => {
         </Grid>
       </Container>
 
-      {/* Call to Action */}
-      <Box
-        sx={{
-          backgroundColor: colors.cream,
-          py: { xs: 4, md: 6 },
-          textAlign: 'center',
-          direction: 'rtl',
-        }}
-      >
-        <Container maxWidth="md">
-          <Typography
-            variant="h4"
-            sx={{
-              mb: 3,
-              fontWeight: 700,
-              fontSize: { xs: '1.5rem', md: '2rem' },
-              color: colors.navy,
-              fontFamily: '"Rubik", sans-serif',
-            }}
-          >
-            רוצה שנוכל לעזור גם לך?
-          </Typography>
-          <Typography
-            variant="body1"
-            sx={{
-              mb: 3,
-              color: colors.pipeGray,
-              fontSize: { xs: '1rem', md: '1.1rem' },
-              fontFamily: '"Heebo", sans-serif',
-            }}
-          >
-            התמחה שלנו זמינים לשירותך כל יום קבוע
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
-            <Box
-              component="a"
-              href="tel:+972526410042"
-              sx={{
-                px: 3,
-                py: 1.5,
-                backgroundColor: colors.copper,
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '6px',
-                fontWeight: 700,
-                display: 'inline-block',
-                transition: 'all 0.3s ease',
-                fontFamily: '"Rubik", sans-serif',
-                '&:hover': {
-                  backgroundColor: colors.copperLight,
-                  transform: 'translateY(-2px)',
-                  boxShadow: `0 8px 16px rgba(${196}, ${122}, ${58}, 0.35)`,
-                },
-              }}
-            >
-              📞 קרא: 052-641-0042
-            </Box>
-            <Box
-              component="a"
-              href="https://wa.me/972526410042"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                px: 3,
-                py: 1.5,
-                backgroundColor: '#25d366',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '6px',
-                fontWeight: 700,
-                display: 'inline-block',
-                transition: 'all 0.3s ease',
-                fontFamily: '"Rubik", sans-serif',
-                '&:hover': {
-                  backgroundColor: '#20ba5c',
-                  transform: 'translateY(-2px)',
-                  boxShadow: '0 8px 16px rgba(32, 186, 92, 0.35)',
-                },
-              }}
-            >
-              💬 WhatsApp
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-
       {/* Share Your Experience */}
-      <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 }, direction: 'rtl' }}>
+      <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
         <Box
           sx={{
             backgroundColor: colors.slate,
@@ -386,7 +301,7 @@ const ReviewsPage = () => {
               fontFamily: '"Rubik", sans-serif',
             }}
           >
-            ⭐ שיתפת עם אחד מהשירותים שלנו?
+            ⭐ נהנית מהשירות שלנו?
           </Typography>
           <Typography
             variant="body2"
@@ -396,58 +311,12 @@ const ReviewsPage = () => {
               fontFamily: '"Heebo", sans-serif',
             }}
           >
-            אנחנו הייינו שמחים לשמוע מהעיתונות שלך. כתוב לנו דרך WhatsApp או התקשר!
+            נהניתם מהשירות שלנו?
+            <br />
+            נשמח מאוד אם תקדישו רגע ותשתפו את החוויה שלכם.
+            <br />
+            הביקורת שלכם עוזרת לנו להשתפר ועוזרת לאחרים לבחור נכון ❤️
           </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
-            <Box
-              component="a"
-              href="tel:+972526410042"
-              sx={{
-                px: 2,
-                py: 1,
-                backgroundColor: colors.copper,
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '4px',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                display: 'inline-block',
-                transition: 'all 0.3s ease',
-                fontFamily: '"Rubik", sans-serif',
-                '&:hover': {
-                  backgroundColor: colors.copperLight,
-                  transform: 'translateY(-2px)',
-                },
-              }}
-            >
-              התקשר
-            </Box>
-            <Box
-              component="a"
-              href="https://wa.me/972526410042"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                px: 2,
-                py: 1,
-                backgroundColor: '#25d366',
-                color: 'white',
-                textDecoration: 'none',
-                borderRadius: '4px',
-                fontSize: '0.9rem',
-                fontWeight: 600,
-                display: 'inline-block',
-                transition: 'all 0.3s ease',
-                fontFamily: '"Rubik", sans-serif',
-                '&:hover': {
-                  backgroundColor: '#20ba5c',
-                  transform: 'translateY(-2px)',
-                },
-              }}
-            >
-              שלח סימים
-            </Box>
-          </Box>
         </Box>
       </Container>
     </Box>
