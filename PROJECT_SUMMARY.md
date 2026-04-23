@@ -77,7 +77,7 @@ Alex web/
 ### 2. WhatsApp Button (WhatsAppButton.js)
 - **Position**: Fixed bottom-left corner
 - **Color**: WhatsApp green (#25d366)
-- **Link**: https://wa.me/972526410041
+- **Link**: https://wa.me/972526410042
 - **Functionality**: Opens WhatsApp app on mobile, WhatsApp Web on desktop
 - **Effects**: Hover animation, tooltip
 

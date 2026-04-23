@@ -174,7 +174,7 @@ const phoneLink = 'tel:+972526410042';   // Line 31
 
 **WhatsAppButton.js**:
 ```javascript
-const whatsappNumber = '972526410041';   // Line 10
+const whatsappNumber = '972526410042';   // Line 10
 ```
 
 ### Business Name

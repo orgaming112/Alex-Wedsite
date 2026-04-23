@@ -100,7 +100,7 @@ Alex web/
 
 ### Update WhatsApp
 1. Open `src/components/WhatsAppButton.js`
-2. Find line 10: `const whatsappNumber = '972526410041';`
+2. Find line 10: `const whatsappNumber = '972526410042';`
 3. Change number (without +, with country code)
 
 ### Add Service

@@ -126,7 +126,7 @@ src/
 
 **WhatsAppButton.js** - Floating contact button
 - Fixed position (bottom-left)
-- Link to WhatsApp (972526410041)
+- Link to WhatsApp (972526410042)
 - Green color (#25d366)
 
 **ImageSlider.js** - Homepage carousel
@@ -160,7 +160,7 @@ const phoneLink = 'tel:+972526410042';
 
 **WhatsAppButton.js** (around line 10):
 ```javascript
-const whatsappNumber = '972526410041';
+const whatsappNumber = '972526410042';
 const whatsappLink = `https://wa.me/${whatsappNumber}`;
 ```
 
