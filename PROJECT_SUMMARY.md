@@ -194,7 +194,7 @@ Alex web/
 
 **Current Phone Numbers:**
 - Main: 052-641-0042
-- WhatsApp: 052-641-0041
+- WhatsApp: 052-641-0042
 
 **Update locations:**
 1. Navbar.js (line 30-31)

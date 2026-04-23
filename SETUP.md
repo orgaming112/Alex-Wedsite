@@ -513,4 +513,4 @@ firebase deploy
 
 **Good luck with your plumber business website! 🔧**
 
-For help: 052-641-0042 or 052-641-0041 (WhatsApp)
+For help: 052-641-0042 or 052-641-0042(WhatsApp)

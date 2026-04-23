@@ -4,7 +4,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { colors } from '../App';
 
 const WhatsAppButton = () => {
-  const whatsappLink = 'https://wa.me/972526410041';
+  const whatsappLink = 'https://wa.me/972526410042';
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
