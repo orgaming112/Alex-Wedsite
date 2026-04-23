@@ -18,6 +18,7 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PlumbingIcon from '@mui/icons-material/Plumbing';
+import { colors } from '../App';
 import ElectricBoltIcon from '@mui/icons-material/ElectricBolt';
 import BuildIcon from '@mui/icons-material/Build';
 import WindowIcon from '@mui/icons-material/Window';
@@ -258,41 +259,61 @@ const ServicesPage = () => {
             תשלום וביקור 
           </Typography>
 
-          <Grid container spacing={3} sx={{ mt: 1 }}>
-            <Grid item xs={12} md={6}>
-              <Card>
-                <CardContent sx={{ textAlign: 'center' }}>
+          <Grid container spacing={3} sx={{ mt: 1 }} justifyContent="center">
+            <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Card
+                sx={{
+                  backgroundColor: colors.navy,
+                  borderRadius: '8px',
+                  boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
+                  width: '100%',
+                  maxWidth: '400px',
+                  p: 2,
+                }}
+              >
+                <CardContent sx={{ textAlign: 'center', p: '16px !important' }}>
                   <Typography
                     variant="h6"
                     sx={{
                       mb: 2,
                       fontWeight: 700,
-                      color: theme.palette.primary.main,
+                      color: colors.copper,
+                      fontFamily: '"Rubik", sans-serif',
                     }}
                   >
                     📞 בדיקה
                   </Typography>
-                  <Typography color="textSecondary" sx={{ mb: 2 }}>
+                  <Typography color="textSecondary" sx={{ mb: 2, color: colors.pipeGray }}>
                     שלחו לנו הודעה, ואנחנו כבר נדאג לכל השאר, נבין יחד את הצורך, נתאם זמן הגעה שנוח לכם, ונציג הצ עת מחיר הוגנת וברורה עוד לפני תחילת העבודה.
                   </Typography>
                 </CardContent>
               </Card>
             </Grid>
 
-            <Grid item xs={12} md={6}>
-              <Card>
-                <CardContent sx={{ textAlign: 'center' }}>
+            <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Card
+                sx={{
+                  backgroundColor: colors.navy,
+                  borderRadius: '8px',
+                  boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
+                  width: '100%',
+                  maxWidth: '400px',
+                  p: 2,
+                }}
+              >
+                <CardContent sx={{ textAlign: 'center', p: '16px !important' }}>
                   <Typography
                     variant="h6"
                     sx={{
                       mb: 2,
                       fontWeight: 700,
-                      color: theme.palette.secondary.main,
+                      color: colors.copper,
+                      fontFamily: '"Rubik", sans-serif',
                     }}
                   >
                     💰 תיאום מחיר
                   </Typography>
-                  <Typography color="textSecondary" sx={{ mb: 2 }}>
+                  <Typography color="textSecondary" sx={{ mb: 2, color: colors.pipeGray }}>
                     מחיר הוגן, שקוף וברור – כבר מהשלב הראשון.
                   </Typography>
                 </CardContent>

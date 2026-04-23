@@ -10,7 +10,9 @@ import {
   Avatar,
   useTheme,
 } from '@mui/material';
+import StarIcon from '@mui/icons-material/Star';
 import { colors } from '../App';
+import StyledButton from '../components/StyledButton';
 
 const ReviewsPage = () => {
   const theme = useTheme();
@@ -122,6 +124,29 @@ const ReviewsPage = () => {
             <br />
             אנחנו כאן כדי לספק לכם שירות מקצועי, אמין ובמחיר הוגן, בדיוק כמו שמגיע לכם.
           </Typography>
+        </Container>
+      </Box>
+
+      {/* Write Review Button */}
+      <Box sx={{ backgroundColor: colors.cream, py: { xs: 3, md: 4 }, textAlign: 'center' }}>
+        <Container maxWidth="sm">
+          <StyledButton
+            component="a"
+            href="https://g.page/r/CaLf7vhW4l_4EBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="primary"
+            size="large"
+            startIcon={<StarIcon />}
+            sx={{
+              '& .MuiButton-startIcon': {
+                marginLeft: 0,
+                marginRight: '0.75rem',
+              },
+            }}
+          >
+            לכתיבת ביקורת
+          </StyledButton>
         </Container>
       </Box>
 
@@ -317,6 +342,23 @@ const ReviewsPage = () => {
             <br />
             הביקורת שלכם עוזרת לנו להשתפר ועוזרת לאחרים לבחור נכון ❤️
           </Typography>
+          <StyledButton
+            component="a"
+            href="https://g.page/r/CaLf7vhW4l_4EBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="primary"
+            size="medium"
+            startIcon={<StarIcon />}
+            sx={{
+              '& .MuiButton-startIcon': {
+                marginLeft: 0,
+                marginRight: '0.5rem',
+              },
+            }}
+          >
+            לכתיבת ביקורת
+          </StyledButton>
         </Box>
       </Container>
     </Box>

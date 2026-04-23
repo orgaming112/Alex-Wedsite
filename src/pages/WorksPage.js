@@ -113,16 +113,19 @@ const WorksPage = () => {
             />
           </Box>
 
-          <Grid container spacing={3} sx={{ mt: 1 }}>
-            <Grid item xs={12} md={6}>
+          <Grid container spacing={3} sx={{ mt: 1 }} justifyContent="center">
+            <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
               <Card
                 sx={{
-                  backgroundColor: 'white',
+                  backgroundColor: colors.navy,
                   borderRadius: '8px',
                   boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
+                  width: '100%',
+                  maxWidth: '400px',
+                  p: 2,
                 }}
               >
-                <CardContent sx={{ textAlign: 'center' }}>
+                <CardContent sx={{ textAlign: 'center', p: '16px !important' }}>
                   <Typography
                     variant="h6"
                     sx={{
@@ -148,15 +151,18 @@ const WorksPage = () => {
               </Card>
             </Grid>
 
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{ display: 'flex', justifyContent: 'center' }}>
               <Card
                 sx={{
-                  backgroundColor: 'white',
+                  backgroundColor: colors.navy,
                   borderRadius: '8px',
                   boxShadow: `0 2px 8px rgba(${10}, ${22}, ${40}, 0.1)`,
+                  width: '100%',
+                  maxWidth: '400px',
+                  p: 2,
                 }}
               >
-                <CardContent sx={{ textAlign: 'center' }}>
+                <CardContent sx={{ textAlign: 'center', p: '16px !important' }}>
                   <Typography
                     variant="h6"
                     sx={{
