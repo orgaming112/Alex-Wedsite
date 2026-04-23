@@ -31,7 +31,7 @@ You now have a **complete, professional React website** for a plumber/handyman b
 
 ✅ **Contact Integration**
 - Phone number button (052-641-0042)
-- WhatsApp integration (052-641-0041)
+- WhatsApp integration (052-641-0042)
 - Auto-calling links (tel:)
 - One-click WhatsApp chat
 
@@ -167,7 +167,7 @@ Press `CTRL + C` in terminal
 
 **Phone Numbers:**
 - Main: 052-641-0042
-- WhatsApp: 052-641-0041
+- WhatsApp: 052-641-0042
 
 **Services Include:**
 1. שירותי אינסטלציה (Plumbing)

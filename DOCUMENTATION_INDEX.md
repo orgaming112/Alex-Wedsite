@@ -159,7 +159,7 @@ This document serves as the table of contents for all your project documentation
 
 **In the code:**
 - Main Phone: 052-641-0042
-- WhatsApp: 052-641-0041
+- WhatsApp: 052-641-0042
 
 **Update these in:**
 - `src/components/Navbar.js` lines 30-31
